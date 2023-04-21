@@ -1,39 +1,65 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# auto_pagination
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
+A Flutter package that provides an auto pagination widget to help users create a view that loads new data as the user scrolls down to the end of the page.
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
+## Installation
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+Add `auto_pagination` as a dependency in your `pubspec.yaml` file:
 
-## Features
-
-TODO: List what your package can do. Maybe include images, gifs, or videos.
-
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+```yaml
+dependencies:
+  auto_pagination: ^1.0.0
+```
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+1. Import the package:
 
 ```dart
-const like = 'sample';
+import 'package:auto_pagination/auto_pagination.dart';
 ```
 
-## Additional information
+2. Wrap your list of items with the `AutoPagination` widget:
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+```dart
+AutoPagination(
+  items: [
+    "random1",
+    "random2",
+    "random3",
+    "random4",
+    "random5",
+    "random6",
+    "random7",
+    "random8",
+    "random9",
+    "random10",
+    "random11",
+    "random12",
+    "random13",
+    "random14",
+  ].map((e) => SizedBox(height: 20, child: Text(e))).toList(),
+),
+```
+
+3. Customize the `AutoPagination` widget as needed using optional parameters:
+
+```dart
+AutoPagination(
+  items: _items,
+  itemGap:10,
+),
+```
+
+## Parameters
+
+- `items`: required list of [Widgets] to be displayed
+- `itemGap`: optional gap between items if not provided default to 10 px
+
+## Example
+
+For a complete example, see the [example app](https://github.com/iamabhishekthakur/auto_pagination/tree/main/example).
+
+## License
+
+This package is licensed under the MIT License. See the [LICENSE](https://github.com/iamabhishekthakur/auto_pagination/blob/main/LICENSE) file for details.
