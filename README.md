@@ -1,6 +1,6 @@
 # auto_pagination
 
-A Flutter package that provides an auto pagination widget to help users create a view that loads new data as the user scrolls down to the end of the page.
+A Flutter package that provides an auto pagination widget to help users create a view that creates pagination view automatically when there is no room left for widget.
 
 ## Installation
 

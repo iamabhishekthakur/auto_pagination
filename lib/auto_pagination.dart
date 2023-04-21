@@ -9,6 +9,10 @@ class AutoPagination extends StatefulWidget {
     super.key,
     required this.items,
     this.itemGap,
+    this.previousButton,
+    this.nextButton,
+    this.currentPageCounterTextStyle,
+    this.otherPageCounterTextStyle,
   });
 
   /// You can use your raw list and create a list of wiget my using map or List.generate
@@ -16,6 +20,18 @@ class AutoPagination extends StatefulWidget {
 
   /// It is the sepeartor height between two item widget
   final double? itemGap;
+
+  /// It allows users to have there own view for previous button
+  final Widget? previousButton;
+
+  /// It allows users to have there own view for next button
+  final Widget? nextButton;
+
+  /// It allows users to set the current page counter style
+  final TextStyle? currentPageCounterTextStyle;
+
+  /// It allows users to style unselected page counter
+  final TextStyle? otherPageCounterTextStyle;
   @override
   State<AutoPagination> createState() => _AutoPaginationState();
 }
@@ -120,10 +136,11 @@ class _AutoPaginationState extends State<AutoPagination> {
                             curve: Curves.decelerate,
                           );
                         },
-                        child: const Icon(
-                          Icons.arrow_back_ios,
-                          size: 14,
-                        ),
+                        child: widget.previousButton ??
+                            const Icon(
+                              Icons.arrow_back_ios,
+                              size: 14,
+                            ),
                       ),
                       Row(
                         children: List.generate(
@@ -140,14 +157,21 @@ class _AutoPaginationState extends State<AutoPagination> {
                               padding: const EdgeInsets.all(8.0),
                               child: Text(
                                 "${index + 1}",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodyMedium
-                                    ?.copyWith(
-                                      fontWeight: value == index
-                                          ? FontWeight.w700
-                                          : FontWeight.w400,
-                                    ),
+                                style: value == index
+                                    ? widget.currentPageCounterTextStyle ??
+                                        Theme.of(context)
+                                            .textTheme
+                                            .bodyMedium
+                                            ?.copyWith(
+                                              fontWeight: FontWeight.w700,
+                                            )
+                                    : widget.otherPageCounterTextStyle ??
+                                        Theme.of(context)
+                                            .textTheme
+                                            .bodyMedium
+                                            ?.copyWith(
+                                              fontWeight: FontWeight.w400,
+                                            ),
                               ),
                             ),
                           ),
@@ -160,10 +184,11 @@ class _AutoPaginationState extends State<AutoPagination> {
                             curve: Curves.decelerate,
                           );
                         },
-                        child: const Icon(
-                          Icons.arrow_forward_ios,
-                          size: 14,
-                        ),
+                        child: widget.nextButton ??
+                            const Icon(
+                              Icons.arrow_forward_ios,
+                              size: 14,
+                            ),
                       ),
                     ],
                   ),

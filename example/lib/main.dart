@@ -38,6 +38,9 @@ class _MyHomePageState extends State<MyHomePage> {
         title: const Text("Example all for auto pagination"),
       ),
       body: AutoPagination(
+        previousButton: const CircleAvatar(
+          child: Icon(Icons.preview),
+        ),
         items: [
           "random1",
           "random2",
@@ -53,7 +56,18 @@ class _MyHomePageState extends State<MyHomePage> {
           "random12",
           "random13",
           "random14",
-        ].map((e) => SizedBox(height: 20, child: Text(e))).toList(),
+        ]
+            .map(
+              (e) => Container(
+                padding: const EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  color: Colors.redAccent,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Text(e),
+              ),
+            )
+            .toList(),
       ),
     );
   }

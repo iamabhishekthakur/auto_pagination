@@ -1,6 +1,6 @@
 name: auto_pagination
-description: A new Flutter package project.
-version: 0.0.1
+description: A Flutter package that provides an auto pagination widget to help users create a view that creates pagination view automatically when there is no room left for widget.
+version: 1.0.0
 homepage: https://github.com/iamabhishekthakur/auto_pagination
 
 environment:
